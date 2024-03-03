@@ -1,12 +1,12 @@
-async function generateRandomImage() {
-    const width = 500; // Kích thước ảnh (chiều rộng)
-    const height = 300; // Kích thước ảnh (chiều cao)
-    const apiUrl = `https://picsum.photos/${width}/${height}`;
+async function generateRandomAnimeImage() {
+    const apiUrl = 'https://api.waifu.pics/sfw/waifu';
 
     try {
         const response = await fetch(apiUrl);
-        const randomImage = document.getElementById("randomImage");
-        randomImage.src = response.url;
+        const data = await response.json();
+
+        const randomAnimeImage = document.getElementById("randomAnimeImage");
+        randomAnimeImage.src = data.url;
     } catch (error) {
         console.error('Error fetching image:', error);
     }
