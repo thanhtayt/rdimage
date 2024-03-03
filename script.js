@@ -1,18 +1,14 @@
 async function generateRandomImage() {
-    const apiKey = 'PtSfavOuLJSBm9TR7DHCV1fKueYGfyt44dASK4t8ErOQEitURMxnoJs4';
-    const random = Math.random(); // Generate random number
-    const apiUrl = `https://api.pexels.com/v1/curated?per_page=1&random=${random}`; // Add random number as parameter
+    const apiKey = '42672181-94ab2764da5b745c3a762f97d';
+    const apiUrl = `https://pixabay.com/api/?key=${apiKey}&q=nature&image_type=photo`;
 
     try {
-        const response = await fetch(apiUrl, {
-            headers: {
-                Authorization: apiKey
-            }
-        });
+        const response = await fetch(apiUrl);
         const data = await response.json();
 
         const randomImage = document.getElementById("randomImage");
-        randomImage.src = data.photos[0].src.large;
+        const randomIndex = Math.floor(Math.random() * data.hits.length);
+        randomImage.src = `${data.hits[randomIndex].largeImageURL}?random=${Math.random()}`;
     } catch (error) {
         console.error('Error fetching image:', error);
     }
