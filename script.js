@@ -8,9 +8,11 @@ async function generateRandomAnimeImage() {
         const randomAnimeImage = document.getElementById("randomAnimeImage");
         randomAnimeImage.src = data.url;
 
-        const downloadLink = document.getElementById("downloadLink");
-        downloadLink.href = data.url;
-        downloadLink.style.display = 'inline'; // Hiển thị nút tải xuống
+        // Tạo một yêu cầu tải xuống
+        const link = document.createElement('a');
+        link.href = data.url;
+        link.download = 'anime_image.jpg';
+        link.click();
     } catch (error) {
         console.error('Error fetching image:', error);
     }
