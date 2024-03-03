@@ -1,6 +1,7 @@
 async function generateRandomImage() {
     const apiKey = 'PtSfavOuLJSBm9TR7DHCV1fKueYGfyt44dASK4t8ErOQEitURMxnoJs4';
-    const apiUrl = `https://api.pexels.com/v1/curated?per_page=1`;
+    const random = Math.random(); // Generate random number
+    const apiUrl = `https://api.pexels.com/v1/curated?per_page=1&random=${random}`; // Add random number as parameter
 
     try {
         const response = await fetch(apiUrl, {
